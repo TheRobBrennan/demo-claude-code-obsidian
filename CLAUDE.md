@@ -16,6 +16,8 @@ demo-claude-code-obsidian/
 │   └── project-tracker/         ← project management demo
 ├── vault-template/              ← the drop-in template for any vault
 │   ├── CLAUDE.md                ← THE main vault agent instructions
+│   ├── .claude/
+│   │   └── commands/            ← slash commands (/new-note, /ask, etc.)
 │   └── templates/
 └── docs/
     ├── commands-reference.md
@@ -49,3 +51,4 @@ These are intentionally simplified versions of the template — don't add comple
 1. Document it in `docs/commands-reference.md`
 2. Add the full workflow to `vault-template/CLAUDE.md` under the Commands section
 3. Add a simplified version to both example vault `CLAUDE.md` files
+4. Create `vault-template/.claude/commands/<command-name>.md` and copy it to both example vaults

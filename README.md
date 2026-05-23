@@ -15,7 +15,7 @@ cd ~/vaults/my-vault
 claude
 ```
 
-**Then type these in the Claude conversation:**
+**Then use slash commands directly:**
 
 ```
 /new-project Acme Corp
@@ -91,6 +91,7 @@ Copy `vault-template/CLAUDE.md` into the root of any existing Obsidian vault:
 
 ```bash
 cp vault-template/CLAUDE.md ~/vaults/my-vault/CLAUDE.md
+cp -r vault-template/.claude ~/vaults/my-vault/.claude
 cp -r vault-template/templates ~/vaults/my-vault/templates
 ```
 
@@ -150,6 +151,8 @@ demo-claude-code-obsidian/
 │   └── project-tracker/         ← project/client management demo vault
 ├── vault-template/              ← drop this into any existing vault
 │   ├── CLAUDE.md
+│   ├── .claude/
+│   │   └── commands/            ← slash commands (/new-note, /ask, etc.)
 │   └── templates/
 └── docs/
     ├── commands-reference.md

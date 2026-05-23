@@ -1,6 +1,6 @@
 # Commands reference
 
-All commands you can use when working inside an Obsidian vault with Claude Code. Type them in the Claude conversation — they are plain English prompts, not terminal shell commands. The `/` prefix is a convention to help Claude recognize intent, not special syntax.
+All commands available when working inside an Obsidian vault with Claude Code. These are registered as real slash commands via `.claude/commands/` — type them directly in Claude Code just like any built-in command.
 
 ---
 

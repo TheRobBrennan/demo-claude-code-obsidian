@@ -8,7 +8,8 @@ If you already have an Obsidian vault, adding Claude Code is a one-step process:
 # Copy the template into your vault root
 cp vault-template/CLAUDE.md ~/path/to/your-vault/CLAUDE.md
 
-# Optional but recommended: copy the templates
+# Copy the slash commands and templates
+cp -r vault-template/.claude ~/path/to/your-vault/.claude
 cp -r vault-template/templates ~/path/to/your-vault/templates
 
 # Start Claude Code
@@ -16,7 +17,7 @@ cd ~/path/to/your-vault
 claude
 ```
 
-That's it. Claude will read your existing notes and respect the provenance rules from the first session.
+That's it. The `.claude/commands/` folder registers `/new-note`, `/ask`, `/daily-review`, and the rest as real slash commands. Claude will read your existing notes and respect the provenance rules from the first session.
 
 ---
 

@@ -22,7 +22,7 @@ personal-kb/
     └── Meeting Notes.md
 ```
 
-**Things to try — type these in the Claude conversation:**
+**Things to try:**
 
 ```
 /find-connections "Zettelkasten Method"
