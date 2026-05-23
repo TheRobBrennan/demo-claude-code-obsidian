@@ -23,7 +23,7 @@ Then try things like:
 /build-moc Projects/Acme Corp
 ```
 
-Every note Claude creates is **clearly marked as AI-generated** and lands in a staging folder (`_claude/`) so your vault stays clean. You decide what to keep, move, or delete.
+Every note Claude creates is **clearly marked as AI-generated** with provenance frontmatter so your vault stays honest. You decide what to keep, move, or delete.
 
 ---
 
@@ -90,7 +90,6 @@ Copy `vault-template/CLAUDE.md` into the root of any existing Obsidian vault:
 ```bash
 cp vault-template/CLAUDE.md ~/vaults/my-vault/CLAUDE.md
 cp -r vault-template/templates ~/vaults/my-vault/templates
-cp -r vault-template/_claude ~/vaults/my-vault/_claude
 ```
 
 Then `cd ~/vaults/my-vault && claude`.
@@ -113,7 +112,7 @@ See [docs/commands-reference.md](docs/commands-reference.md) for the full list w
 | Command | What it does |
 | :--- | :--- |
 | `/new-project <name>` | Creates a complete project folder with MOC, meeting log, notes area |
-| `/new-note <title>` | Creates a note from a template, staged in `_claude/` for your review |
+| `/new-note <title>` | Creates a note from a template, placed directly in your vault |
 | `/summarize` | Summarizes a note, folder, or the whole vault |
 | `/find-connections <note>` | Suggests `[[wikilinks]]` for a note based on vault content |
 | `/generate-tags` | Suggests or writes tags for untagged notes |
@@ -149,7 +148,6 @@ demo-claude-code-obsidian/
 │   └── project-tracker/         ← project/client management demo vault
 ├── vault-template/              ← drop this into any existing vault
 │   ├── CLAUDE.md
-│   ├── _claude/
 │   └── templates/
 └── docs/
     ├── commands-reference.md

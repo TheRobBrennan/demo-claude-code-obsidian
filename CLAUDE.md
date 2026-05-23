@@ -16,7 +16,6 @@ demo-claude-code-obsidian/
 │   └── project-tracker/         ← project management demo
 ├── vault-template/              ← the drop-in template for any vault
 │   ├── CLAUDE.md                ← THE main vault agent instructions
-│   ├── _claude/
 │   └── templates/
 └── docs/
     ├── commands-reference.md

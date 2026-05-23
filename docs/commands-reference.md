@@ -20,7 +20,6 @@ Creates a complete project workspace.
 - `Projects/<name>/_index.md` — project MOC (Map of Content)
 - `Projects/<name>/meetings/` — for meeting notes
 - `Projects/<name>/notes/` — for working notes
-- `Projects/<name>/_claude/` — AI staging area
 - Entry in `Projects/_master-index.md`
 - Entry in vault `Index.md`
 
@@ -40,7 +39,7 @@ Always asks before editing. Shows you exactly what will change.
 
 ### `/new-note <title> [in:<project>] [template:<type>]`
 
-Creates a note from a template, staged in `_claude/`.
+Creates a note from a template, placed directly in your vault.
 
 ```bash
 /new-note "Week 3 Check-in" in:Acme Corp template:meeting
@@ -74,7 +73,7 @@ Summarize at different scopes:
 /summarize vault                        # high-level vault overview
 ```
 
-Output: 3–5 sentence summary, key themes, open questions. Offers to save to `_claude/`.
+Output: 3–5 sentence summary, key themes, open questions. Offers to save as a new note.
 
 ---
 
@@ -112,7 +111,7 @@ Generates a Map of Content for a folder, grouping notes by theme.
 /build-moc Projects/Acme Corp
 ```
 
-Saves draft to `_claude/`. You move it to `Index.md` or `_index.md` when satisfied.
+Saves draft directly in the folder. You move or rename it to `Index.md` or `_index.md` when satisfied.
 
 ---
 

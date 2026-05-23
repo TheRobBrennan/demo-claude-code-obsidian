@@ -18,9 +18,9 @@ Focus on getting the Claude Code × Obsidian repo into a reviewable state.
 
 ## Notes from today
 
-Been thinking about how the provenance system for Claude-generated notes should work. Key insight: the _claude/ staging folder should be **local to the context** — one per project, not one global dump. That way, when you're in Projects/Acme, the AI drafts are right there.
+Been thinking about how the provenance system for Claude-generated notes should work. Decided against a separate staging folder — AI-generated notes live directly in the vault tree alongside regular notes. The frontmatter (`claude_generated: true`, `claude_status: draft`) is what distinguishes them, not their location. Cleaner and easier to navigate.
 
-Also: need to look more into how the Obsidian graph handles files in subfolders. Notes in `_claude/` folders will show up in the graph, which could be noisy. May want to add a note in the setup docs about filtering these out.
+Also: use `/review-generated` to sweep for draft notes. The frontmatter approach means Obsidian search and graph work normally — no special folder to filter out.
 
 ## Links I want to explore
 
