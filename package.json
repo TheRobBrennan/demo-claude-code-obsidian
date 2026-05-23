@@ -15,6 +15,8 @@
   "scripts": {
     "test": "time npm run test:workflows",
     "test:workflows": "chmod +x .github/test-workflows.sh && .github/test-workflows.sh",
+    "create-vault": "bash scripts/create-vault.sh",
+    "create-vault:named": "bash scripts/create-vault.sh",
     "telemetry:setup": "cp .env.example .env && echo '✅ Created .env from .env.example'",
     "telemetry:launch": "npm run telemetry:launch:personal-kb",
     "telemetry:launch:personal-kb": "source .env && cd example-vaults/personal-kb && ollama launch claude --model qwen3.5:9b",
