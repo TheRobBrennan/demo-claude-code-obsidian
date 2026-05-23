@@ -1,0 +1,24 @@
+{
+  "name": "demo-claude-code-obsidian",
+  "version": "0.0.0",
+  "description": "An example project to explore working with Claude Code and Obsidian",
+  "homepage": "https://github.com/TheRobBrennan/demo-claude-code-obsidian#readme",
+  "bugs": {
+    "url": "https://github.com/TheRobBrennan/demo-claude-code-obsidian/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheRobBrennan/demo-claude-code-obsidian.git"
+  },
+  "license": "MIT",
+  "author": "Rob Brennan <rob@sploosh.ai>",
+  "type": "commonjs",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "time npm run test:workflows",
+    "test:workflows": "chmod +x .github/test-workflows.sh && .github/test-workflows.sh"
+  }
+}
