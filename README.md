@@ -8,14 +8,16 @@ Use Claude Code as an AI agent inside your Obsidian vault — generating notes, 
 
 You open your vault directory in a terminal, run `claude`, and talk to your vault in plain English. Claude Code reads and writes markdown files directly — no plugin required, no sync issues, no middleman.
 
+**In your terminal:**
+
 ```bash
 cd ~/vaults/my-vault
 claude
 ```
 
-Then try things like:
+**Then type these in the Claude conversation:**
 
-```bash
+```
 /new-project Acme Corp
 /find-connections "Building a Second Brain"
 /daily-review

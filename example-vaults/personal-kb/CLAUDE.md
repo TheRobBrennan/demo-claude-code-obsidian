@@ -22,9 +22,9 @@ personal-kb/
     └── Meeting Notes.md
 ```
 
-**Things to try in this vault:**
+**Things to try — type these in the Claude conversation:**
 
-```bash
+```
 /find-connections "Zettelkasten Method"
 /generate-tags folder:notes
 /summarize folder:notes
