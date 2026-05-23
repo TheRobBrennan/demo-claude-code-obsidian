@@ -15,7 +15,7 @@ Note the URL format change — it's `/embed/VIDEO_ID`, not the standard watch U
 
 ## The easier path: Media Extended plugin
 
-The community plugin **Media Extended** handles this properly — paste a YouTube URL and it renders as an actual embedded player without manually writing iframes. It also handles timestamps, playback speed, and other media types.
+The community plugin **[[Media Extended]]** handles this properly — paste a YouTube URL and it renders as an actual embedded player without manually writing iframes. It also handles timestamps, playback speed, and other media types.
 
 Install it the same way as Image Toolkit: **Settings → Community plugins → Browse → search "Media Extended" → Install → Enable**.
 
@@ -32,7 +32,7 @@ Let's try pasting in a YouTube URL now. Doesn't work. We need to paste in a YouT
 
 ## For URL bookmark previews (like Notion)
 
-The plugin **Link Embed** or **Auto Link Title** are the closest equivalents — they fetch page metadata and render a visual card. Neither is as seamless as Notion's bookmark block, but they're the best Obsidian has.
+The plugin **[[Link Embed]]** or **Auto Link Title** are the closest equivalents — they fetch page metadata and render a visual card. Neither is as seamless as Notion's bookmark block, but they're the best Obsidian has.
 
 Let's try the Link Embed plugin for my website:
 
