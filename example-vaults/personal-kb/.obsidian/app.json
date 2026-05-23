@@ -3,5 +3,8 @@
     "defaultViewMode": "source",
     "legacyEditor": false
   },
-  "promptDelete": false
+  "promptDelete": false,
+  "newFileLocation": "current",
+  "attachmentFolderPath": "./assets",
+  "alwaysUpdateLinks": true
 }
