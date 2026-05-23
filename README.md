@@ -4,6 +4,34 @@ Use Claude Code as an AI agent inside your Obsidian vault — generating notes, 
 
 ---
 
+## TL;DR — get a vault in 60 seconds
+
+```bash
+# 1. Clone this repo
+git clone https://github.com/TheRobBrennan/demo-claude-code-obsidian.git
+cd demo-claude-code-obsidian
+
+# 2. Create a new vault in ~/Downloads (includes plugins, config, and templates)
+npm run create-vault                      # → ~/Downloads/my-obsidian-vault
+# or give it a name:
+npm run create-vault:named my-kb          # → ~/Downloads/my-kb
+
+# 3. Open the vault in Obsidian
+#    File → Open vault → ~/Downloads/my-obsidian-vault
+
+# 4. Launch Claude Code from inside the vault
+cd ~/Downloads/my-obsidian-vault
+npm run launch                            # local model via Ollama (no telemetry)
+npm run telemetry:setup                   # first time only — copies .env.example → .env
+npm run telemetry:launch                  # launch with OpenTelemetry metrics
+```
+
+The generated vault includes Image Toolkit, Media Extended, and Link Embed plugins pre-installed, plus all Claude Code slash commands (`/new-note`, `/daily-review`, `/find-connections`, etc.) ready to use.
+
+When you're happy with the vault, move it anywhere — iCloud Drive, Dropbox, a local folder — just close it in Obsidian, move the folder, and reopen from the new location.
+
+---
+
 ## What this does
 
 You open your vault directory in a terminal, run `claude`, and talk to your vault in plain English. Claude Code reads and writes markdown files directly — no plugin required, no sync issues, no middleman.
