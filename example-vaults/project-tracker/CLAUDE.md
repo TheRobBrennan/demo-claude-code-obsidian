@@ -21,9 +21,7 @@ project-tracker/
 │       └── notes/
 │           └── Architecture Overview.md
 └── templates/
-    ├── Project.md
-    ├── Meeting.md
-    └── Client.md
+    └── Meeting.md
 ```
 
 ---
@@ -132,7 +130,7 @@ started: {{date}}
 
 Creates a note in `Projects/<project>/notes/` (or `notes/` if no project specified).
 
-Available templates: `meeting`, `project`, `client`, `default`.
+Available templates: `meeting`, `default`.
 
 When using the `meeting` template, pre-populate with today's date and ask what project it belongs to if `in:` isn't specified.
 
