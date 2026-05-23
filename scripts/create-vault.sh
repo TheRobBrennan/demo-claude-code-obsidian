@@ -32,9 +32,9 @@ cat > "$DEST/package.json" <<PKGJSON
   "description": "Obsidian vault powered by Claude Code",
   "scripts": {
     "setup": "cp .env.example .env && echo '✅ Created .env — edit it if needed'",
-    "launch": "ollama launch claude --model qwen3-coder",
+    "launch": "ollama launch claude --model qwen3.5:9b",
     "telemetry:setup": "cp .env.example .env && echo '✅ Created .env — edit it if needed'",
-    "telemetry:launch": "source .env && ollama launch claude --model qwen3-coder"
+    "telemetry:launch": "source .env && ollama launch claude --model qwen3.5:9b"
   }
 }
 PKGJSON
