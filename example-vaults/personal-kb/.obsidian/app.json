@@ -2,5 +2,6 @@
   "app": {
     "defaultViewMode": "source",
     "legacyEditor": false
-  }
+  },
+  "promptDelete": false
 }
