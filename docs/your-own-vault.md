@@ -8,8 +8,8 @@ If you already have an Obsidian vault, adding Claude Code is a one-step process:
 # Copy the template into your vault root
 cp vault-template/CLAUDE.md ~/path/to/your-vault/CLAUDE.md
 
-# Optional but recommended: copy the staging folder and templates
-cp -r vault-template/_claude ~/path/to/your-vault/_claude
+# Copy the slash commands and templates
+cp -r vault-template/.claude ~/path/to/your-vault/.claude
 cp -r vault-template/templates ~/path/to/your-vault/templates
 
 # Start Claude Code
@@ -17,7 +17,7 @@ cd ~/path/to/your-vault
 claude
 ```
 
-That's it. Claude will read your existing notes and respect the provenance rules from the first session.
+That's it. The `.claude/commands/` folder registers `/new-note`, `/ask`, `/daily-review`, and the rest as real slash commands. Claude will read your existing notes and respect the provenance rules from the first session.
 
 ---
 
@@ -101,5 +101,5 @@ Check the file's frontmatter — if it has `claude_generated: true`, Claude was 
 **Claude created notes I didn't ask for:**
 This shouldn't happen. Claude should only create files when you explicitly run a command. If it's happening, check whether there's something in your existing `CLAUDE.md` that might be triggering autonomous behavior.
 
-**The staging folder is getting cluttered:**
+**There are too many AI-generated notes accumulating:**
 Run `/review-generated` and do a sweep. Set a recurring reminder to do this weekly.

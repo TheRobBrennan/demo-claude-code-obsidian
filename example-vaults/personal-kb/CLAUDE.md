@@ -12,7 +12,6 @@ This is a demo Obsidian vault for experimenting with the Claude Code × Obsidian
 personal-kb/
 ├── Index.md                 ← master Map of Content
 ├── CLAUDE.md                ← this file
-├── _claude/                 ← AI staging area
 ├── notes/                   ← all notes live here
 │   ├── (productivity)
 │   ├── (technology)
@@ -23,9 +22,9 @@ personal-kb/
     └── Meeting Notes.md
 ```
 
-**Things to try in this vault:**
+**Things to try:**
 
-```bash
+```
 /find-connections "Zettelkasten Method"
 /generate-tags folder:notes
 /summarize folder:notes
@@ -85,7 +84,7 @@ Summarizes content. At `vault` scope, reads Index.md and samples notes.
 
 ### `/build-moc <folder>`
 
-Generates a Map of Content and saves draft to `_claude/`.
+Generates a Map of Content and saves draft directly in the folder.
 
 ### `/ask <question>`
 
@@ -101,7 +100,7 @@ Reads last 3–5 daily notes (if any), scans for open tasks, suggests today's no
 
 ### `/review-generated`
 
-Lists all `claude_status: draft` files in `_claude/`.
+Lists all `claude_status: draft` files in the vault.
 
 ---
 
