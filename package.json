@@ -19,6 +19,10 @@
   },
   "scripts": {
     "test": "time npm run test:workflows",
-    "test:workflows": "chmod +x .github/test-workflows.sh && .github/test-workflows.sh"
+    "test:workflows": "chmod +x .github/test-workflows.sh && .github/test-workflows.sh",
+    "telemetry:setup": "cp .env.example .env && echo '✅ Created .env from .env.example'",
+    "telemetry:launch": "npm run telemetry:launch:personal-kb",
+    "telemetry:launch:personal-kb": "source .env && cd example-vaults/personal-kb && ollama launch claude --model qwen3.5:9b",
+    "telemetry:launch:project-tracker": "source .env && cd example-vaults/project-tracker && ollama launch claude --model qwen3.5:9b"
   }
 }
