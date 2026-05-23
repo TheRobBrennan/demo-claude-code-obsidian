@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "defaultMode": "bypassPermissions"
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "if": "Bash(gh pr create*)",
+            "command": "input=$(cat); cmd=$(echo \"$input\" | jq -r '.tool_input.command'); if echo \"$cmd\" | grep -q 'gh pr create'; then template=$(cat .github/pull_request_template.md); msg=\"STOP — your gh pr create --body MUST use the exact template below or CI will fail:\\n\\n$template\"; jq -n --arg m \"$msg\" '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"additionalContext\":$m}}'; fi",
+            "statusMessage": "Injecting PR template..."
+          }
+        ]
+      }
+    ]
+  }
+}
