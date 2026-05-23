@@ -12,11 +12,6 @@
   },
   "license": "MIT",
   "author": "Rob Brennan <rob@sploosh.ai>",
-  "type": "commonjs",
-  "main": "index.js",
-  "directories": {
-    "doc": "docs"
-  },
   "scripts": {
     "test": "time npm run test:workflows",
     "test:workflows": "chmod +x .github/test-workflows.sh && .github/test-workflows.sh",
