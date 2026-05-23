@@ -1,0 +1,10 @@
+{
+  "app": {
+    "defaultViewMode": "source",
+    "legacyEditor": false
+  },
+  "promptDelete": false,
+  "newFileLocation": "current",
+  "attachmentFolderPath": "./assets",
+  "alwaysUpdateLinks": true
+}
