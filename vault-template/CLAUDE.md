@@ -19,7 +19,6 @@ You are an AI agent operating inside an Obsidian vault. Your job is to help the 
 **You may never:**
 
 - Edit, rewrite, or append to a user's notes without explicit permission
-- Create files outside of `_claude/` staging areas unless the user asks you to put them somewhere specific
 - Delete any file
 - Rename or move files (suggest this to the user instead)
 
@@ -37,14 +36,6 @@ claude_model: (the model you are running on, if known)
 
 `claude_status` values: `draft` → `reviewed` → `approved` (user changes these)
 
-### Staging areas
-
-New files go into `_claude/` subfolders — never directly into the main note tree:
-
-- Vault-wide content → `_claude/`
-- Project-specific content → `Projects/<ProjectName>/_claude/`
-- You may suggest that the user move a file somewhere specific, but do not move it yourself
-
 ---
 
 ## Vault structure
@@ -53,7 +44,6 @@ Learn this vault's structure on startup by reading:
 
 1. `Index.md` (if it exists) — the master Map of Content
 2. `Projects/` (if it exists) — list of active projects
-3. `_claude/README.md` — your staging area
 
 When the user runs a command that needs vault context, scan the relevant directory first. Don't assume you know what's there — always check.
 
@@ -75,8 +65,6 @@ Creates a complete project workspace. Replace `<name>` with the project or clien
    - `Projects/<name>/_index.md` — the project MOC (see template below)
    - `Projects/<name>/meetings/` — folder for meeting notes
    - `Projects/<name>/notes/` — folder for working notes
-   - `Projects/<name>/_claude/` — AI staging area for this project
-   - `Projects/<name>/_claude/README.md` — staging area readme
 2. If `Projects/_master-index.md` exists, add a link to the new project. If it doesn't exist, create it.
 3. If `Index.md` exists at vault root, add a link to the new project under a "Projects" heading.
 4. Tell the user what was created and what to do next.
@@ -115,35 +103,21 @@ status: active
 <!-- [[Project Name]] -->
 ```
 
-**Staging area readme** (`Projects/<name>/_claude/README.md`):
-
-```markdown
-# AI-generated content for {{name}}
-
-Files here were created by Claude Code and are awaiting your review.
-
-**To keep a file:** move it to `Projects/{{name}}/notes/` or wherever it belongs.
-**To discard:** delete the file.
-**To mark as reviewed:** change `claude_status: draft` to `claude_status: reviewed` in the frontmatter.
-
-Files here will not appear in your vault graph until you move them.
-```
-
 ---
 
 ### `/new-note <title> [in:<folder>] [template:<type>]`
 
-Creates a new note from a template, staged in `_claude/`.
+Creates a new note from a template.
 
 **Options:**
 
-- `in:<folder>` — target folder hint (e.g. `in:Projects/Acme Corp/notes`)
+- `in:<folder>` — target folder (e.g. `in:Projects/Acme Corp/notes`); defaults to `notes/`
 - `template:<type>` — `meeting`, `project`, `daily`, `book`, `default`
 
 **Workflow:**
 
 1. Read `templates/<type>.md` if it exists, otherwise use a sensible default structure
-2. Create the note in `_claude/` (or `<folder>/_claude/` if `in:` is specified)
+2. Create the note in `<folder>/` (or `notes/` if no `in:` specified)
 3. Fill in any obvious fields from context (date, project name if in a project folder)
 4. Tell the user where the file is and what fields they should fill in
 
@@ -160,7 +134,7 @@ Summarizes content at varying scope.
 3. `folder:<path>` — read all `.md` files in the folder, produce a thematic summary across them
 4. `vault` — read `Index.md` and a sample of notes, produce a high-level picture of what the vault contains
 
-Always ask before writing anything. Offer to save the summary as a note in `_claude/`.
+Always ask before writing anything. Offer to save the summary as a note in `notes/`.
 
 ---
 
@@ -200,7 +174,7 @@ Generates a Map of Content for a folder.
 
 1. Read all `.md` files in `<folder-path>` (non-recursively unless the folder is small)
 2. Group notes by theme, type, or date — use whatever grouping makes the most sense
-3. Draft the MOC in `_claude/` with links to every note in the folder
+3. Draft the MOC in `<folder-path>/` with links to every note in the folder
 4. Tell the user where the draft is
 
 **MOC structure:**
@@ -238,7 +212,7 @@ Answers a question using your vault as context (RAG-style).
 2. Read those notes (start with MOCs and indexes to orient, then drill into specific notes)
 3. Answer the question, citing specific notes with `[[wikilinks]]`
 4. If the answer is incomplete because relevant notes don't exist yet, say so
-5. Offer to create a note capturing the answer in `_claude/`
+5. Offer to create a note capturing the answer in `notes/`
 
 ---
 
@@ -299,10 +273,10 @@ Syncs a project's MOC with the current state of its files.
 
 ## On startup
 
-When the user first types `claude` in this vault, read `Index.md` (if present) and `_claude/README.md`, then say:
+When the user first types `claude` in this vault, read `Index.md` (if present), then say:
 
 > Ready. This vault has [N notes / no notes yet]. What would you like to do?
 
-If there are pending draft notes in `_claude/`, mention them:
+If there are pending draft notes (files with `claude_status: draft`), mention them:
 
 > You have [N] AI-generated notes waiting for review. Type `/review-generated` to see them.

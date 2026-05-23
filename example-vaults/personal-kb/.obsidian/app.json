@@ -1,1 +1,6 @@
-{"app":{"defaultViewMode":"source","legacyEditor":false}}
+{
+  "app": {
+    "defaultViewMode": "source",
+    "legacyEditor": false
+  }
+}

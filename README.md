@@ -47,8 +47,14 @@ You'll need an [Anthropic API key](https://console.anthropic.com). See [setup/cl
 
 ```bash
 # Install Ollama from https://ollama.com, then:
-ollama pull qwen3-coder
-ollama launch claude --model qwen3-coder
+ollama -v
+# ollama version is 0.24.0
+
+# Pull the appropriate model from Ollama
+ollama pull qwen3.5:9b
+
+# Launch Claude with the model
+ollama launch claude --model qwen3.5:9b
 ```
 
 No API key needed. See [setup/ollama-setup.md](setup/ollama-setup.md) for model recommendations.
@@ -58,12 +64,22 @@ No API key needed. See [setup/ollama-setup.md](setup/ollama-setup.md) for model 
 ```bash
 # Open one of the example vaults in Obsidian first, then:
 cd example-vaults/personal-kb
-claude
+ollama launch claude --model qwen3.5:9b # or claude to use the Anthropic cloud models
 
 # Or the project management vault:
 cd example-vaults/project-tracker
-claude
+ollama launch claude --model qwen3.5:9b # or claude to use the Anthropic cloud models
 ```
+
+**With telemetry** (captures token throughput, latency, GPU usage via OpenTelemetry):
+
+```bash
+npm run telemetry:setup                  # first time only — copies .env.example → .env
+npm run telemetry:launch                 # launches personal-kb with qwen3.5:9b
+npm run telemetry:launch:project-tracker # or the project-tracker vault
+```
+
+Requires the telemetry stack from [how-to-setup-local-ollama-with-claude-code](https://github.com/TheRobBrennan/how-to-setup-local-ollama-with-claude-code) to be running. See [setup/ollama-setup.md](setup/ollama-setup.md) for details.
 
 The example vaults have sample notes and a pre-configured `CLAUDE.md` so Claude knows the vault's structure immediately.
 
@@ -113,9 +129,8 @@ See [docs/commands-reference.md](docs/commands-reference.md) for the full list w
 
 Claude never silently edits your notes. See [docs/provenance-system.md](docs/provenance-system.md) for the full system, but the short version:
 
-- AI-created notes land in `_claude/` subfolders, never in your main note tree
 - Every AI note has frontmatter: `claude_generated: true`, `claude_status: draft`, `claude_command: /command-used`
-- To keep a note: move it out of `_claude/`. That's it.
+- Notes are created directly in your vault's note tree — search `claude_generated: true` in Obsidian to find them all
 - Claude will never edit a file unless it has `claude_generated: true` in its frontmatter, or you explicitly say "edit [filename]"
 
 ---

@@ -12,13 +12,10 @@ This vault demonstrates using Claude Code for client and project management. It'
 project-tracker/
 ├── Index.md                       ← master vault overview
 ├── CLAUDE.md                      ← this file
-├── _claude/                       ← vault-level AI staging
 ├── Projects/
 │   ├── _master-index.md           ← all projects at a glance
-│   ├── _claude/                   ← project-level AI staging
 │   └── Acme Corp/
 │       ├── _index.md              ← Acme MOC (source of truth)
-│       ├── _claude/               ← Acme AI staging
 │       ├── meetings/
 │       │   └── 2026-05-01 Kickoff.md
 │       └── notes/
@@ -58,14 +55,6 @@ claude_date: YYYY-MM-DD
 ---
 ```
 
-### Staging areas
-
-New files go into `_claude/` subfolders. Never into the main note tree directly.
-
-- Vault-wide → `_claude/`
-- All projects → `Projects/_claude/`
-- Specific project → `Projects/<ProjectName>/_claude/`
-
 ---
 
 ## The vault as source of truth
@@ -92,9 +81,7 @@ Creates a complete project workspace.
 - `Projects/<name>/`
   - `_index.md` — project MOC
   - `meetings/` — meeting notes folder
-  - `notes/` — working notes folder  
-  - `_claude/` — AI staging area
-  - `_claude/README.md` — staging readme
+  - `notes/` — working notes folder
 - Adds link to `Projects/_master-index.md`
 - Adds link to `Index.md` under "Active projects"
 
@@ -143,7 +130,7 @@ started: {{date}}
 
 ### `/new-note <title> [in:<project>] [template:<type>]`
 
-Creates a note staged in `_claude/` (or `Projects/<project>/_claude/`).
+Creates a note in `Projects/<project>/notes/` (or `notes/` if no project specified).
 
 Available templates: `meeting`, `project`, `client`, `default`.
 
@@ -172,7 +159,7 @@ Syncs `Projects/<name>/_index.md` with current file state.
 - `meeting:<path>` — summarizes a meeting note, extracts action items
 - `vault` — reads `_master-index.md` and all project MOCs, produces portfolio overview
 
-Offer to save the summary in `_claude/`.
+Offer to save the summary in `notes/`.
 
 ---
 
@@ -209,20 +196,20 @@ Offer to create today's daily note if a templates/Daily Note.md exists.
 
 ### `/review-generated`
 
-Lists all `claude_status: draft` files across all `_claude/` folders in the vault, grouped by project.
+Lists all files with `claude_status: draft` across the vault, grouped by location.
 
 ---
 
 ### `/build-moc <project>`
 
-Regenerates `Projects/<project>/_index.md` from current file state. Saves to `_claude/` first — user moves it to replace the existing one when satisfied.
+Regenerates `Projects/<project>/_index.md` from current file state. Shows the user a diff of changes before editing the file in place.
 
 ---
 
 ## On startup
 
-Read `Index.md`, `Projects/_master-index.md`, and `_claude/README.md`. Then say:
+Read `Index.md` and `Projects/_master-index.md`. Then say:
 
 > Ready — project-tracker has [N] active projects. Try `/daily-review` or `/new-project Your Client Name`.
 
-If there are draft notes in any `_claude/` folder, mention the count.
+If there are files with `claude_status: draft` anywhere in the vault, mention the count.

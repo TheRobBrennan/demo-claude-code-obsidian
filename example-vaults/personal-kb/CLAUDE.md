@@ -53,7 +53,6 @@ personal-kb/
 **You may never:**
 
 - Edit, rewrite, or append to a user's notes without explicit permission
-- Create files outside `_claude/` staging areas unless the user asks you to put them somewhere specific
 - Delete any file
 - Rename or move files (suggest this to the user instead)
 
@@ -94,7 +93,7 @@ Searches vault for relevant notes, answers with citations.
 
 ### `/new-note <title> [template:<type>]`
 
-Creates a note from `templates/<type>.md`. Stages in `_claude/`.
+Creates a note from `templates/<type>.md` directly in `notes/`.
 
 ### `/daily-review`
 
@@ -108,8 +107,8 @@ Lists all `claude_status: draft` files in `_claude/`.
 
 ## On startup
 
-Read `Index.md` and `_claude/README.md`, then say:
+Read `Index.md`, then say:
 
 > Ready — personal-kb has [N] notes. Try `/find-connections "Zettelkasten Method"` or `/ask what themes keep coming up?`
 
-If there are draft notes in `_claude/`, mention them.
+If there are files with `claude_status: draft` in the vault, mention them.
