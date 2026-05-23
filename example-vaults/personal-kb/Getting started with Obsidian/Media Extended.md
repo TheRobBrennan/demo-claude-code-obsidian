@@ -1,0 +1,1 @@
+Install it the same way as Image Toolkit: **Settings → Community plugins → Browse → search "Media Extended" → Install → Enable**.
