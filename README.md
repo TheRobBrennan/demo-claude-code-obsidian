@@ -129,9 +129,8 @@ See [docs/commands-reference.md](docs/commands-reference.md) for the full list w
 
 Claude never silently edits your notes. See [docs/provenance-system.md](docs/provenance-system.md) for the full system, but the short version:
 
-- AI-created notes land in `_claude/` subfolders, never in your main note tree
 - Every AI note has frontmatter: `claude_generated: true`, `claude_status: draft`, `claude_command: /command-used`
-- To keep a note: move it out of `_claude/`. That's it.
+- Notes are created directly in your vault's note tree — search `claude_generated: true` in Obsidian to find them all
 - Claude will never edit a file unless it has `claude_generated: true` in its frontmatter, or you explicitly say "edit [filename]"
 
 ---
