@@ -36,7 +36,7 @@ You can skip this step if you're pulling models locally.
 
 ```bash
 # Recommended for most machines with 16GB+ RAM
-ollama pull qwen3-coder
+ollama pull qwen3-coder:latest
 
 # Good alternative — strong tool-calling
 ollama pull devstral
@@ -56,7 +56,7 @@ ollama pull qwen3-coder:cloud
 ## 4. Launch Claude Code with your model
 
 ```bash
-ollama launch claude --model qwen3-coder
+ollama launch claude --model qwen3.5:9b
 ```
 
 That's it. `ollama launch` sets all the necessary environment variables and starts Claude Code pointed at your local model.
@@ -66,7 +66,7 @@ That's it. `ollama launch` sets all the necessary environment variables and star
 ```bash
 export ANTHROPIC_BASE_URL=http://localhost:11434
 export ANTHROPIC_AUTH_TOKEN=ollama
-claude --model qwen3-coder
+claude --model qwen3.5:9b
 ```
 
 ### Launch with telemetry
