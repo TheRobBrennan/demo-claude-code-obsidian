@@ -23,6 +23,22 @@ if [ -f "$REPO_ROOT/.env" ]; then
   cp "$REPO_ROOT/.env" "$DEST/.env"
 fi
 
+# Write settings.local.json with pre-approved Ollama permissions
+# (settings.local.json is globally gitignored so it must be generated here)
+mkdir -p "$DEST/.claude"
+cat > "$DEST/.claude/settings.local.json" <<SETTINGS
+{
+  "permissions": {
+    "allow": [
+      "Bash(ollama list *)",
+      "Bash(ollama ps *)",
+      "Bash(ollama show *)",
+      "Bash(ollama stop *)"
+    ]
+  }
+}
+SETTINGS
+
 # Write a standalone package.json so the vault can be launched independently
 cat > "$DEST/package.json" <<PKGJSON
 {
@@ -31,10 +47,11 @@ cat > "$DEST/package.json" <<PKGJSON
   "private": true,
   "description": "Obsidian vault powered by Claude Code",
   "scripts": {
-    "setup": "cp .env.example .env && echo '✅ Created .env — edit it if needed'",
-    "launch": "ollama launch claude --model qwen3.5:9b",
+    "start": "npm run launch:gpt-oss",
+    "launch:gpt-oss": "ollama launch claude --model gpt-oss:20b",
+    "launch:gemma4": "ollama launch claude --model gemma4:e2b",
     "telemetry:setup": "cp .env.example .env && echo '✅ Created .env — edit it if needed'",
-    "telemetry:launch": "source .env && ollama launch claude --model qwen3.5:9b"
+    "telemetry:launch": "source .env && ollama launch claude --model gpt-oss:20b"
   }
 }
 PKGJSON
@@ -44,10 +61,12 @@ echo "✅  Vault ready at: $DEST"
 echo ""
 echo "   Next steps:"
 echo "   1. Open in Obsidian:  File → Open vault → $DEST"
-echo "   2. Launch with Claude (no telemetry):"
-echo "      cd \"$DEST\" && npm run launch"
+echo "   2. Launch with Claude:"
+echo "      cd \"$DEST\" && npm start                   # gpt-oss:20b (default)"
+echo "      cd \"$DEST\" && npm run launch:gpt-oss      # gpt-oss:20b"
+echo "      cd \"$DEST\" && npm run launch:gemma4       # gemma4:e2b"
 echo "   3. Launch with telemetry (requires telemetry stack running):"
-echo "      cd \"$DEST\" && npm run telemetry:setup  # first time only"
+echo "      cd \"$DEST\" && npm run telemetry:setup     # first time only"
 echo "      cd \"$DEST\" && npm run telemetry:launch"
 echo ""
 echo "   To move to iCloud Drive, close the vault in Obsidian, move the folder,"
