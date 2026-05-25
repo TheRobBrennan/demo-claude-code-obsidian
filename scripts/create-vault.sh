@@ -37,7 +37,7 @@ SETTINGS
 cat > "$DEST/package.json" <<PKGJSON
 {
   "name": "$(echo "$VAULT_NAME" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "private": true,
   "description": "Obsidian vault powered by Claude Code",
   "scripts": {
