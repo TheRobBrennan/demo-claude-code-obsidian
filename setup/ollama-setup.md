@@ -32,16 +32,23 @@ You can skip this step if you're pulling models locally.
 
 ## 3. Pull a model
 
-### Running locally (needs RAM, no internet after download)
+### Supported models for this project
 
 ```bash
-# Recommended for most machines with 16GB+ RAM
+# Primary recommendation — strong tool-calling
+ollama pull gpt-oss:20b
+
+# Lighter alternative — faster responses
+ollama pull gemma4:e2b
+```
+
+### Other options (locally hosted, needs RAM)
+
+```bash
+# Best for large vaults — 256K context window
 ollama pull qwen3-coder:latest
 
-# Good alternative — strong tool-calling
-ollama pull devstral
-
-# Lightweight — faster, less capable
+# Lightweight, faster
 ollama pull qwen3:8b
 ```
 
@@ -56,43 +63,25 @@ ollama pull qwen3-coder:cloud
 ## 4. Launch Claude Code with your model
 
 ```bash
-ollama launch claude --model qwen3.5:9b
+ollama launch claude --model gpt-oss:20b
 ```
 
 That's it. `ollama launch` sets all the necessary environment variables and starts Claude Code pointed at your local model.
+
+Or use the npm scripts from inside any vault:
+
+```bash
+npm start               # gpt-oss:20b (default)
+npm run launch:gpt-oss  # gpt-oss:20b
+npm run launch:gemma4   # gemma4:e2b
+```
 
 ### Manual setup (if `ollama launch` isn't available)
 
 ```bash
 export ANTHROPIC_BASE_URL=http://localhost:11434
 export ANTHROPIC_AUTH_TOKEN=ollama
-claude --model qwen3.5:9b
-```
-
-### Launch with telemetry
-
-To capture per-session metrics (token throughput, latency, GPU usage) via OpenTelemetry, source the `.env` file before launching. This requires the telemetry stack from [how-to-setup-local-ollama-with-claude-code](https://github.com/TheRobBrennan/how-to-setup-local-ollama-with-claude-code) to be running.
-
-**First-time setup:**
-
-```bash
-npm run telemetry:setup   # copies .env.example → .env
-```
-
-**Launch an example vault with telemetry:**
-
-```bash
-npm run telemetry:launch                    # personal-kb with qwen3.5:9b (default)
-npm run telemetry:launch:personal-kb        # same as above, explicit
-npm run telemetry:launch:project-tracker    # project-tracker vault
-```
-
-These scripts source `.env` (which sets `CLAUDE_CODE_ENABLE_TELEMETRY=1` and the OTEL variables) before launching. Without sourcing `.env`, Claude Code starts with no telemetry active.
-
-If you want to launch from inside a vault directory manually:
-
-```bash
-source ../../.env && ollama launch claude --model qwen3.5:9b
+claude --model gpt-oss:20b
 ```
 
 ## Model recommendations
@@ -101,13 +90,13 @@ Based on community benchmarks for Claude Code specifically (tool-calling, multi-
 
 | Model | RAM needed | Speed | Tool calling | Best for |
 | :--- | :--- | :--- | :--- | :--- |
-| **GLM-4.7-Flash** | ~8GB | Fast | ★★★★★ | Best local tool-calling, fast responses |
+| **gpt-oss:20b** | ~12GB | Fast | ★★★★★ | Primary supported model — strong tool-calling |
+| **gemma4:e2b** | ~4GB | Very fast | ★★★★☆ | Lighter machines, faster responses |
 | **Qwen3-Coder** | ~14GB | Medium | ★★★★☆ | Best for large vaults, 256K context |
-| **Devstral Small** | ~16GB | Medium | ★★★★☆ | Complex multi-file tasks |
-| **Qwen3:8b** | ~6GB | Fast | ★★★☆☆ | Lighter machines, simpler tasks |
+| **Qwen3:8b** | ~6GB | Fast | ★★★☆☆ | Simpler tasks, smaller footprint |
 | **kimi-k2.6:cloud** | 0 (cloud) | Fast | ★★★★☆ | No local GPU, needs internet |
 
-For Obsidian vault work specifically: **GLM-4.7-Flash** for speed, **Qwen3-Coder** if your vault is large (the 256K context window matters when reading many notes at once).
+For Obsidian vault work specifically: **gpt-oss:20b** as the default, **gemma4:e2b** if you want faster responses on a lighter machine.
 
 See [Ollama's model library](https://ollama.com/library) for the full list.
 

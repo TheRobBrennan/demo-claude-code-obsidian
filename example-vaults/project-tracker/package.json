@@ -1,0 +1,11 @@
+{
+  "name": "project-tracker",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Obsidian vault powered by Claude Code",
+  "scripts": {
+    "start": "npm run launch:gpt-oss",
+    "launch:gpt-oss": "ollama launch claude --model gpt-oss:20b",
+    "launch:gemma4": "ollama launch claude --model gemma4:e2b"
+  }
+}

@@ -6,5 +6,7 @@
   "promptDelete": false,
   "newFileLocation": "current",
   "attachmentFolderPath": "./assets",
-  "alwaysUpdateLinks": true
+  "alwaysUpdateLinks": true,
+  "showUnsupportedFiles": false,
+  "showLineNumber": false
 }

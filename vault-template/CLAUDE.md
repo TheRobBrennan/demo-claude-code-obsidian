@@ -61,15 +61,14 @@ Creates a complete project workspace. Replace `<name>` with the project or clien
 
 **Workflow:**
 
-1. Create `Projects/<name>/` directory structure:
-   - `Projects/<name>/_index.md` — the project MOC (see template below)
-   - `Projects/<name>/meetings/` — folder for meeting notes
-   - `Projects/<name>/notes/` — folder for working notes
-2. If `Projects/_master-index.md` exists, add a link to the new project. If it doesn't exist, create it.
+1. Create `<name>/_index.md` — the project MOC (see template below). Use the full path the user provides (e.g. `Personal/Projects/<name>/_index.md`).
+2. Look for a `_index.md` in the parent folder. If it exists and has `claude_generated: true`, add a link to the new project. If it doesn't exist, create it.
 3. If `Index.md` exists at vault root, add a link to the new project under a "Projects" heading.
 4. Tell the user what was created and what to do next.
 
-**Project MOC template** (`Projects/<name>/_index.md`):
+Do **not** create `meetings/` or `notes/` subfolders — the user will create those if and when they need them.
+
+**Project MOC template** (`<name>/_index.md`):
 
 ```markdown
 ---
@@ -77,6 +76,7 @@ claude_generated: true
 claude_status: draft
 claude_command: /new-project
 claude_date: {{date}}
+claude_model: {{model}}
 type: project-moc
 project: {{name}}
 status: active
@@ -87,19 +87,13 @@ status: active
 ## Overview
 <!-- Add a one-paragraph description of this project -->
 
-## Key contacts
-<!-- [[Person Name]] — role -->
-
 ## Open threads
 - [ ] 
 
 ## Notes
 <!-- [[note title]] — brief description -->
 
-## Meetings
-<!-- [[date Meeting Name]] — key outcome -->
-
-## Related projects
+## Related
 <!-- [[Project Name]] -->
 ```
 
