@@ -21,7 +21,9 @@ npm run create-vault:named my-kb          # → ~/Downloads/my-kb
 
 # 4. Launch Claude Code from inside the vault
 cd ~/Downloads/my-obsidian-vault
-npm run launch                            # local model via Ollama (no telemetry)
+npm start                                 # gpt-oss:20b (default)
+npm run launch:gpt-oss                    # gpt-oss:20b
+npm run launch:gemma4                     # gemma4:e2b
 npm run telemetry:setup                   # first time only — copies .env.example → .env
 npm run telemetry:launch                  # launch with OpenTelemetry metrics
 ```
@@ -80,11 +82,12 @@ You'll need an [Anthropic API key](https://console.anthropic.com). See [setup/cl
 ollama -v
 # ollama version is 0.24.0
 
-# Pull the appropriate model from Ollama
-ollama pull qwen3.5:9b
+# Pull one of the supported models
+ollama pull gpt-oss:20b    # recommended — strong tool-calling
+ollama pull gemma4:e2b     # lighter, fast responses
 
-# Launch Claude with the model
-ollama launch claude --model qwen3.5:9b
+# Launch Claude with your chosen model
+ollama launch claude --model gpt-oss:20b
 ```
 
 No API key needed. See [setup/ollama-setup.md](setup/ollama-setup.md) for model recommendations.
@@ -94,18 +97,21 @@ No API key needed. See [setup/ollama-setup.md](setup/ollama-setup.md) for model 
 ```bash
 # Open one of the example vaults in Obsidian first, then:
 cd example-vaults/personal-kb
-ollama launch claude --model qwen3.5:9b # or claude to use the Anthropic cloud models
+npm start                  # gpt-oss:20b (default)
+npm run launch:gemma4      # gemma4:e2b
+# or use the Anthropic cloud models:
+claude
 
 # Or the project management vault:
 cd example-vaults/project-tracker
-ollama launch claude --model qwen3.5:9b # or claude to use the Anthropic cloud models
+npm start                  # gpt-oss:20b (default)
 ```
 
 **With telemetry** (captures token throughput, latency, GPU usage via OpenTelemetry):
 
 ```bash
 npm run telemetry:setup                  # first time only — copies .env.example → .env
-npm run telemetry:launch                 # launches personal-kb with qwen3.5:9b
+npm run telemetry:launch                 # launches personal-kb with gpt-oss:20b
 npm run telemetry:launch:project-tracker # or the project-tracker vault
 ```
 
