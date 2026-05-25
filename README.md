@@ -24,8 +24,6 @@ cd ~/Downloads/my-obsidian-vault
 npm start                                 # gpt-oss:20b (default)
 npm run launch:gpt-oss                    # gpt-oss:20b
 npm run launch:gemma4                     # gemma4:e2b
-npm run telemetry:setup                   # first time only — copies .env.example → .env
-npm run telemetry:launch                  # launch with OpenTelemetry metrics
 ```
 
 The generated vault includes Image Toolkit, Media Extended, and Link Embed plugins pre-installed, plus all Claude Code slash commands (`/new-note`, `/daily-review`, `/find-connections`, etc.) ready to use.
@@ -107,16 +105,6 @@ cd example-vaults/project-tracker
 npm start                  # gpt-oss:20b (default)
 ```
 
-**With telemetry** (captures token throughput, latency, GPU usage via OpenTelemetry):
-
-```bash
-npm run telemetry:setup                  # first time only — copies .env.example → .env
-npm run telemetry:launch                 # launches personal-kb with gpt-oss:20b
-npm run telemetry:launch:project-tracker # or the project-tracker vault
-```
-
-Requires the telemetry stack from [how-to-setup-local-ollama-with-claude-code](https://github.com/TheRobBrennan/how-to-setup-local-ollama-with-claude-code) to be running. See [setup/ollama-setup.md](setup/ollama-setup.md) for details.
-
 The example vaults have sample notes and a pre-configured `CLAUDE.md` so Claude knows the vault's structure immediately.
 
 ### 4. Add to your own vault
@@ -194,8 +182,3 @@ demo-claude-code-obsidian/
     └── your-own-vault.md
 ```
 
----
-
-## Related projects
-
-This builds on [how-to-setup-local-ollama-with-claude-code](https://github.com/yourusername/how-to-setup-local-ollama-with-claude-code) — if you haven't set up local models yet, start there.

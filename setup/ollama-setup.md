@@ -84,32 +84,6 @@ export ANTHROPIC_AUTH_TOKEN=ollama
 claude --model gpt-oss:20b
 ```
 
-### Launch with telemetry
-
-To capture per-session metrics (token throughput, latency, GPU usage) via OpenTelemetry, source the `.env` file before launching. This requires the telemetry stack from [how-to-setup-local-ollama-with-claude-code](https://github.com/TheRobBrennan/how-to-setup-local-ollama-with-claude-code) to be running.
-
-**First-time setup:**
-
-```bash
-npm run telemetry:setup   # copies .env.example → .env
-```
-
-**Launch an example vault with telemetry:**
-
-```bash
-npm run telemetry:launch                    # personal-kb with gpt-oss:20b (default)
-npm run telemetry:launch:personal-kb        # same as above, explicit
-npm run telemetry:launch:project-tracker    # project-tracker vault
-```
-
-These scripts source `.env` (which sets `CLAUDE_CODE_ENABLE_TELEMETRY=1` and the OTEL variables) before launching. Without sourcing `.env`, Claude Code starts with no telemetry active.
-
-If you want to launch from inside a vault directory manually:
-
-```bash
-source ../../.env && ollama launch claude --model gpt-oss:20b
-```
-
 ## Model recommendations
 
 Based on community benchmarks for Claude Code specifically (tool-calling, multi-file reasoning, instruction following):
