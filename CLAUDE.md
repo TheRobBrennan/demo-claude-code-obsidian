@@ -17,7 +17,9 @@ demo-claude-code-obsidian/
 ├── vault-template/              ← the drop-in template for any vault
 │   ├── CLAUDE.md                ← THE main vault agent instructions
 │   ├── .claude/
-│   │   └── commands/            ← slash commands (/new-note, /ask, etc.)
+│   │   ├── commands/            ← slash commands (/new-note, /ask, etc.)
+│   │   ├── skills/              ← daily workflow skills (/start-day, /prioritize-day, /close-day)
+│   │   └── settings.json        ← pre-approved read/write permissions
 │   └── templates/
 └── docs/
     ├── commands-reference.md
@@ -52,3 +54,12 @@ These are intentionally simplified versions of the template — don't add comple
 2. Add the full workflow to `vault-template/CLAUDE.md` under the Commands section
 3. Add a simplified version to both example vault `CLAUDE.md` files
 4. Create `vault-template/.claude/commands/<command-name>.md` and copy it to both example vaults
+
+## Adding a new skill
+
+Skills are multi-step routines (like `/start-day`) that live in `.claude/skills/<skill-name>/SKILL.md`. Unlike slash commands, they contain the full workflow logic directly in the SKILL.md file rather than delegating to CLAUDE.md.
+
+1. Document it in `docs/commands-reference.md`
+2. Create `vault-template/.claude/skills/<skill-name>/SKILL.md` with a YAML frontmatter block (`name`, `description`) followed by the full workflow
+3. If the skill interacts with daily notes, update `vault-template/templates/Daily Note.md` to include any required sections the skill depends on
+4. The `prioritize-day` skill's "Close personal commitments" section is intentionally generic — note in the docs that users should customize it for their own vault

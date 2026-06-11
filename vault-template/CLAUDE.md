@@ -243,15 +243,28 @@ Lists all pending AI-generated notes so the user can decide what to keep.
 
 ### `/update-project <name>`
 
-Syncs a project's MOC with the current state of its files.
+Syncs a project's MOC with the current state of its files. Accepts either a single project name or a folder path to batch-update all projects within it.
 
-**Workflow:**
+**Variants:**
 
-1. Read `Projects/<name>/_index.md`
-2. Read all files currently in `Projects/<name>/notes/` and `Projects/<name>/meetings/`
+- `/update-project Acme Corp` — update one project whose `_index.md` is at `Acme Corp/_index.md`
+- `/update-project folder:Personal/Projects` — find every `_index.md` under `Personal/Projects/` (any depth) and update each one
+
+**Workflow (single project):**
+
+1. Read `<name>/_index.md` (also try `Projects/<name>/_index.md` if not found at the given path)
+2. Read all files currently in `<name>/notes/` and `<name>/meetings/`
 3. Identify notes in the MOC that no longer exist, and files that exist but aren't in the MOC
 4. Produce a diff: "These notes are missing from the MOC: [...] These MOC entries are stale: [...]"
-5. Ask before editing. If the user says yes, update `_index.md` in place (this file may be claude_generated or user-created — if user-created, show the exact edits you'll make and ask again)
+5. Ask before editing. If the user says yes, update `_index.md` in place (if user-created, show the exact edits and ask again)
+
+**Workflow (folder batch via `folder:<path>`):**
+
+1. Recursively find every `_index.md` under `<path>`
+2. For each one, run the single-project workflow steps 2–4 to produce a per-project diff
+3. Present all diffs together, grouped by project path
+4. Ask once: "Update all of the above?" — accept "all", "none", or a list of project names to selectively apply
+5. Apply updates only to the confirmed projects
 
 ---
 

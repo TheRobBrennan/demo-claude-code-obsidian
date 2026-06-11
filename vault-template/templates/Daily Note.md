@@ -3,16 +3,23 @@ tags: [daily-note]
 date: {{date}}
 ---
 
-# {{date}}
+# 📆 Calendar
+<!-- Key events, appointments, meetings -->
+- 
 
-## Morning intention
+---
 
-## Open tasks
+# 👀 OBSERVE: What's your day look like?
 
-- [ ]
+---
 
-## Notes from today
+# 🗺️ Game plan
+<!-- /start-day populates by project; /prioritize-day reorganizes into 🟢/🔵/🟡/🔴 tiers -->
 
-## Tomorrow
+---
 
-- [ ]
+# 🌃 For tomorrow...
+
+---
+
+# 📿 Loose ends
