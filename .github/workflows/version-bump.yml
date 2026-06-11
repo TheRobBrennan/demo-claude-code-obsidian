@@ -41,8 +41,9 @@ jobs:
           
       - name: Determine Version Bump Type
         id: bump-type
+        env:
+          COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
         run: |
-          COMMIT_MESSAGE="${{ github.event.head_commit.message }}"
           echo "Commit message: $COMMIT_MESSAGE"
           
           if [[ "$COMMIT_MESSAGE" =~ feat!: || "$COMMIT_MESSAGE" =~ fix!: || "$COMMIT_MESSAGE" =~ refactor!: ]]; then
