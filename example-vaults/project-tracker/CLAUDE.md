@@ -206,6 +206,24 @@ Regenerates `Projects/<project>/_index.md` from current file state. Shows the us
 
 ---
 
+## Daily workflows
+
+These are multi-step skills that live in `.claude/skills/`. Invoke them just like slash commands.
+
+### `/start-day`
+
+Morning ritual. Reads yesterday's carried-forward items and close-out, prompts for today's calendar and tasks, then creates or updates today's daily note pre-populated with everything. Chains straight into `/prioritize-day` when done.
+
+### `/prioritize-day`
+
+Tiers today's game plan into 🟢/🔵/🟡/🔴 buckets. Auto-elevates Household tasks and personal commitments to 🔵 minimum. Asks for guidance on the rest, then offers to write the tiered plan back to the daily note in-place.
+
+### `/close-day`
+
+End-of-day ritual. Reviews completed vs. unfinished game-plan items, analyzes the OBSERVE timeline (time blocks, categories, focus vs. fragmentation), writes a `# 🌙 Day in review` section into the daily note, and ensures all meaningful folders have `_index.md` files for the Graph view.
+
+---
+
 ## On startup
 
 Read `Index.md` and `Projects/_master-index.md`. Then say:

@@ -146,6 +146,9 @@ See [docs/commands-reference.md](docs/commands-reference.md) for the full list w
 | `/daily-review` | Morning briefing from your recent notes and open tasks |
 | `/review-generated` | Lists all pending AI-generated notes for your review |
 | `/update-project <name>` | Syncs a project's MOC with the current state of its files |
+| `/start-day` | Morning ritual — reads yesterday's carried items, prompts for calendar/tasks, creates today's daily note, chains into `/prioritize-day` |
+| `/prioritize-day` | Tiers today's game plan into 🟢/🔵/🟡/🔴 buckets; offers to write the plan back to the daily note |
+| `/close-day` | End-of-day ritual — reviews completions, writes a time-use analysis into the daily note, ensures all folders have `_index.md` files |
 
 ---
 
@@ -174,7 +177,8 @@ demo-claude-code-obsidian/
 ├── vault-template/              ← drop this into any existing vault
 │   ├── CLAUDE.md
 │   ├── .claude/
-│   │   └── commands/            ← slash commands (/new-note, /ask, etc.)
+│   │   ├── commands/            ← slash commands (/new-note, /ask, etc.)
+│   │   └── skills/              ← daily workflow skills (/start-day, /prioritize-day, /close-day)
 │   └── templates/
 └── docs/
     ├── commands-reference.md
