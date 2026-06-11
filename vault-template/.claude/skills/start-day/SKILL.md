@@ -64,7 +64,7 @@ Do **not** pre-check anything. The user starts the day with everything open.
 Note: `/prioritize-day` will later replace this section's content in-place with a 🟢/🟡/🔴 tiered view. Populate it here in project-grouped format — that's the right starting state.
 
 ### `# 👀 OBSERVE: What's your day look like?`
-Add a single timestamped entry at the current local time:
+Run `date "+%-I:%M%p" | tr '[:upper:]' '[:lower:]'` to get the actual current local time, then add a single timestamped entry:
 
 ```
 H:MMam/pm 🌅 Started the day with /start-day

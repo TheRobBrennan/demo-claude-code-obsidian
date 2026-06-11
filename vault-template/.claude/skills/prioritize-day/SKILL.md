@@ -135,7 +135,7 @@ _Prioritized [time] via /prioritize-day_
 
 Everything from the line after `# 🗺️ Game plan` up to the next `---` or top-level `#` heading is replaced. The heading itself stays.
 
-**2. Append a timestamped log entry** to `# 👀 OBSERVE` (always append — never replace existing entries):
+**2. Append a timestamped log entry** to `# 👀 OBSERVE` (always append — never replace existing entries). Run `date "+%-I:%M%p" | tr '[:upper:]' '[:lower:]'` to get the actual current local time:
 
 ```
 H:MMam/pm ⚡️ Prioritized the day via /prioritize-day ([N] items: [X] 🟢, [B] 🔵, [Z] 🔴)

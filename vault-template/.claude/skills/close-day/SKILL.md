@@ -49,7 +49,7 @@ Present the analysis in chat first.
 
 The daily note is **user-created** (no `claude_generated: true`), so per the vault rules you must get permission before editing it. Treating `/close-day` as explicit permission to append is reasonable, but still **show the exact section you'll add and confirm** before writing.
 
-Append a new top-level section to the daily note (after `# 📿 Loose ends`, at the end of the file):
+Run `date "+%-I:%M%p" | tr '[:upper:]' '[:lower:]'` to get the actual current local time for the timestamp. Append a new top-level section to the daily note (after `# 📿 Loose ends`, at the end of the file):
 
 ```markdown
 ---
@@ -79,7 +79,7 @@ Also append a timestamped **log entry** to the bottom of the `# 👀 OBSERVE: Wh
 12:14am 🌙 Closed out the day with /close-day
 ```
 
-Use the **actual current local time** (which, since closing happens late, is often after midnight). On a re-run, add a fresh entry rather than editing the previous one — the timeline is an append-only log.
+Run `date "+%-I:%M%p" | tr '[:upper:]' '[:lower:]'` to get the actual current local time before writing the entry. On a re-run, add a fresh entry rather than editing the previous one — the timeline is an append-only log.
 
 ## Step 5 — Ensure indexes / MOCs for the Graph view
 
