@@ -138,7 +138,7 @@ When using the `meeting` template, pre-populate with today's date and ask what p
 
 ### `/update-project <name>`
 
-Syncs `Projects/<name>/_index.md` with current file state.
+Syncs `Projects/<name>/_index.md` with current file state. Accepts a single project name or a `folder:<path>` to batch-update all projects within a path.
 
 **Workflow:**
 
@@ -148,6 +148,8 @@ Syncs `Projects/<name>/_index.md` with current file state.
 4. Show the diff clearly
 5. Ask before editing
 6. If `_index.md` is NOT `claude_generated`, show exact edits and ask again
+
+For batch mode (`/update-project folder:Projects`), present all diffs together and ask once before applying.
 
 ---
 

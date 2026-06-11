@@ -29,7 +29,10 @@ Syncs a project's MOC with its current files — adds entries for new notes, fla
 
 ```
 /update-project Acme Corp
+/update-project folder:Projects
 ```
+
+Single-project form updates one `_index.md`. Folder form recursively finds all `_index.md` files under the given path, shows all diffs together, and asks once before applying.
 
 Always asks before editing. Shows you exactly what will change.
 
@@ -133,6 +136,58 @@ Cites specific notes with `[[wikilinks]]`. Notes when relevant information doesn
 ---
 
 ## Daily workflows
+
+### `/start-day`
+
+Morning ritual — reads yesterday's carried items, prompts for today's calendar and task list, then creates or updates today's daily note pre-populated with everything. Automatically chains into `/prioritize-day` when done.
+
+```
+/start-day
+```
+
+**What it does:**
+1. Reads yesterday's close-out and carried items
+2. Prompts you for calendar events and tasks (or accepts them if already provided)
+3. Creates/updates `Daily notes/<Weekday>, <Month> <Day>th <Year>.md` with Calendar, Game plan, and OBSERVE sections
+4. Rolls straight into `/prioritize-day` to tier the game plan
+
+---
+
+### `/prioritize-day`
+
+Tiers today's game plan into 🟢/🔵/🟡/🔴 buckets so you know exactly what to tackle.
+
+```
+/prioritize-day
+/prioritize-day the client deliverable is the priority
+```
+
+**Tiers:**
+- 🟢 **Must Do Today** — hard deadlines, commitments that affect others
+- 🔵 **Planned For Today** — intended and expected to happen
+- 🟡 **Slipping** — only used during re-prioritization when 🔵 items are at risk
+- 🔴 **Captured — Not Today** — parked, not forgotten
+
+Household tasks and personal commitments are always elevated to 🔵 minimum. Offers to write the tiered plan back to the daily note in-place.
+
+---
+
+### `/close-day`
+
+End-of-day ritual — reviews completions, analyzes time use, writes a `# 🌙 Day in review` section into the daily note, and ensures all meaningful folders have `_index.md` files for the Graph view.
+
+```
+/close-day
+```
+
+**What it does:**
+1. Identifies the active day (most recently modified daily note)
+2. Reviews completed vs. unfinished game-plan items
+3. Analyzes the OBSERVE timeline: time blocks, categories, focus vs. fragmentation, plan vs. reality
+4. Appends the analysis to the daily note (asks before writing)
+5. Walks all non-excluded folders and creates missing `_index.md` MOC files
+
+---
 
 ### `/daily-review`
 
